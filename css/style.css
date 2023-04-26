@@ -88,7 +88,7 @@ input::placeholder {
     position: absolute;
     transform: translateX(-50px);
     /* color: green; */
-    color: rgb(9, 231, 231);
+    color: rgb(8, 216, 216);
 
     font-size: 27px;
     margin: 15px auto
@@ -113,7 +113,7 @@ input::placeholder {
     height: 40px;
     color: #264485;
     box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.15);
-    background-color: white;
+    background-color: rgb(253, 253, 253);
     font-weight: 500;
     border-radius: 20px;
     font-size: 21px;
