@@ -10,59 +10,117 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
-    <main class="app-container">
-        <header class="tool-bar">
-            <div class="logo">
-                <img src="img/memeLogo.png">
+<body class="app-container" onload="init()">
+
+    <header class="tool-bar">
+        <div class="logo">
+            <img src="img/memeLogo.png">
+        </div>
+        <div class="main-header">
+            <button class="gallery-btn" onclick="onOpenGallery()">Gallery</button>
+            <button class="about-btn" onclick="onOpenAbout()">About</button>
+        </div>
+    </header>
+    <section class="about">
+        <div class="about-meme">
+            <img src="img/position-meme.jpg">
+        </div>
+        <article class="about-text">
+            <h1>Welcome to MEME-HUB!</h1>
+            <p>Make your own meme on MEME-HUB Generator '😎' </p>
+            <p><span class="small-span">so... </span>Sit back, Relax, and Make a <span class="span-meme">MEME!</span>
+            </p>
+            <p>Created by Ohad Mazza</p>
+        </article>
+    </section>
+    <section class="gallery-container">
+        <div class="search-bar">
+            <div class="search-row">
+                <input class="search-input" placeholder="Search">
+                <i class="search-icon fa-solid fa-magnifying-glass"></i>
             </div>
-            <div class="main-header">
-                <button class="gallery-btn">Gallery</button>
-                <button class="about-btn">About</button>
+            <div class="common-words">common words</div>
+            <button class="more-btn">More</button>
+        </div>
+        <section class="gallery"></section>
+    </section>
+    <section class="meme-editor">
+        <canvas id="meme-canvas" height="450" width="450"></canvas>
+        <div class="editor">
+            <input class="input-text" placeholder="type here">
+            <div class="edit-lines-sec">
+                <button class="switch-line-btn" onclick="onSwitchLine()">
+                    <i class="fa-solid fa-up-down"></i>
+                </button>
+                <button class="add-line-btn" onclick="onAddLine()">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+                <button class="delete-text-btn" onclick="onDeleteLine()">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
             </div>
-        </header>
-        <section class="gallery-container">
-            <div class="search-bar">
-                <div class="search-row">
-                    <!-- <label class="searchTxt">Search:</label> -->
-                    <input class="search-input" placeholder="Search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <!-- <button type="button" class="search-btn"> -->
-                    <!-- <span class="fa-stack"> -->
-                    <!-- <i class="fa-solid fa-circle fa-stack-2x"></i> -->
-                    <!-- <i class="fa-solid fa-magnifying-glass fa-stack-1x fa-inverse"></i> -->
-                    <!-- </span> -->
+            <section class="text-section">
+                <button class="increase-font-size" onclick="onResizeFont(1)">
+                    <img src="img/increase-font.png">
+                </button>
+                <button class="decrease-font-size" onclick="onResizeFont(-1)">
+                    <img src="img/decrease-font.png">
+                </button>
+                <button class="align-text-left" onclick="onAlign('left')">
+                    <img src="img/align-to-right.png" rotate="180">
+                </button>
+                <button class="align-text-center" onclick="onAlign('center')">
+                    <img src="img/align-center.png">
+                </button>
+                <button class="align-text-right" onclick="onAlign('right')">
+                    <img src="img/align-to-left.png">
+                </button>
+                <select class="font-select" onchange="onSetFont(value)">s
+                    <option value="impact">IMPACT</option>
+                    <option value="arial">ARIAL</option>
+                    <option value="comic sans">COMIC SANS</option>
+                    <option value="myriad pro">MYRIAD PRO</option>
+                    <option value="helvetica">HELVETICA</option>
+                </select>
+                <button class="font-color" title="font color">
+                    <img src="img/stroke-color.png">
+                    <input class="input-color" type="color" name="stroke color" value="#000000"
+                        oninput="onChangedStrokeColor(this.value)">
+                </button>
+
+                <button class="font-color" title="font color">
+                    <img src="img/font-color.png">
+                    <input class="input-color" type="color" name="font color" value="#000000"
+                        oninput="onChangedFontColor(this.value)">
+                </button>
+            </section>
+            <div class="emoji-input">
+                <button class="emoji-arrow left" onclick="onMoveLeftEmoji()">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <div class="emoji-container">
                 </div>
-                <!-- <button type="button" style="background-image: url('img/search.png');
-                        background-repeat: no-repeat; background-size: cover;" class="search-btn"
-                            onclick="OnClickedSeach()"></button> -->
-                <div class="common-words">common words</div>
-                <button class="more-btn">More</button>
+                <button class="emoji-arrow right" onclick="onMoveRightEmoji()">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
             </div>
-
-            <div class="gellery"></div>
-        </section>
-    </main>
-
-
-
-
-
-
-
-
-
-
+            <div class="file-sec">
+                <button class="share-btn">
+                    <i class="fa-solid fa-share-nodes"></i>
+                    Share</button>
+                <a href="#" onclick="downloadCanvas(this)" download="file-name">
+                    <button class="download-btn">
+                        <i class="fa-solid fa-download"></i>
+                        Download</button>
+                </a>
+            </div>
+        </div>
+    </section>
 
 
-
-
-
-
-
-
-
+    <script src="js/gallery.controller.js"></script>
     <script src="js/meme.controller.js"></script>
+    <script src="js/meme.service.js"></script>
 </body>
 
 </html>

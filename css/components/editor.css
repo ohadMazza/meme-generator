@@ -1,0 +1,127 @@
+.editor {
+    background-color: #5c5e62;
+    display: grid;
+    grid-template-rows: 2fr 2fr 4fr 3fr 2fr;
+
+}
+
+.meme-editor {
+    justify-content: center;
+}
+
+.editor,
+canvas {
+    margin: 10px 10px;
+    justify-content: center;
+    border-radius: 5%;
+    height: 450px;
+    width: 450px;
+
+}
+
+.input-text {
+    grid-row: 1;
+    color: #22252c;
+    background-color: white;
+    height: 57px;
+    width: 400px;
+    border-radius: 30px;
+    margin: 10px auto;
+    font-size: 1.562rem;
+    padding-left: 30px;
+}
+
+.input-text::placeholder {
+    font-size: 1.562rem;
+    color: #22252c;
+    text-indent: -30px;
+}
+
+.edit-lines-sec {
+    grid-row: 2;
+    inset: 0;
+    margin: auto;
+}
+
+.edit-lines-sec button {
+    width: 58px;
+    height: 53px;
+    border-radius: 10px;
+}
+
+.edit-lines-sec i {
+    font-size: 1.75rem;
+    color: white;
+}
+
+.switch-line-btn {
+    background-color: rgb(18, 163, 163);
+}
+
+.add-line-btn {
+    background-color: rgb(37, 190, 37);
+}
+
+.delete-text-btn {
+    background-color: red;
+}
+
+
+.file-sec {
+    grid-row: 5;
+
+}
+
+.file-sec button {
+    width: 190px;
+    height: 51px;
+    border-radius: 15px;
+    font-size: 1.312rem;
+}
+
+.share-btn {
+    background-color: #1e7cd3;
+}
+
+.download-btn {
+    background-color: #8f44bb;
+}
+
+
+
+.emoji-input {
+    grid-row: 4;
+}
+
+
+.emoji-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 30px;
+    padding: 5px;
+    width: 230px;
+    height: 70px;
+    background-color: white;
+    inset: 0;
+    margin: auto;
+}
+
+.emoji-container {
+    display: flex;
+}
+
+.emoji {
+    display: inline-block;
+    font-size: 1.562rem;
+    margin-right: 5px;
+}
+
+
+.emoji-arrow {
+    border: none;
+    background-color: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+}

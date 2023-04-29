@@ -1,0 +1,46 @@
+.about {
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.about-text {
+    color: white;
+}
+
+.about-text h1 {
+    font-size: 2.2rem;
+    margin-top: 0;
+}
+
+.about-text p {
+    font-size: 1.3rem;
+}
+
+.about p:last-child {
+    font-size: 0.9rem;
+}
+
+.about-meme img {
+    width: 100%;
+}
+
+.span-meme {
+    font-size: 1.7rem;
+}
+
+.small-span {
+    font-size: 1.1rem;
+
+}
+
+
+
+.about-meme,
+.about-text {
+    margin: 50px 10px;
+    height: 470px;
+    width: 470px;
+
+}
