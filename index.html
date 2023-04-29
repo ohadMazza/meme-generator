@@ -21,6 +21,8 @@
             <button class="about-btn" onclick="onOpenAbout()">About</button>
         </div>
     </header>
+    <section class="saved-memes">
+    </section>
     <section class="about">
         <div class="about-meme">
             <img src="img/position-meme.jpg">
@@ -28,7 +30,6 @@
         <article class="about-text">
             <h1>Welcome to MEME-HUB!</h1>
             <p>Make your own meme on MEME-HUB Generator '😎' </p>
-            <p><span class="small-span">so... </span>Sit back, Relax, and Make a <span class="span-meme">MEME!</span>
             </p>
             <p>Created by Ohad Mazza</p>
         </article>
@@ -37,10 +38,9 @@
         <div class="search-bar">
             <div class="search-row">
                 <input class="search-input" placeholder="Search">
-                <i class="search-icon fa-solid fa-magnifying-glass"></i>
+                <i class="search-icon fa-solid fa-magnifying-glass" onclick="OnClickedSeach()"></i>
             </div>
-            <div class="common-words">common words</div>
-            <button class="more-btn">More</button>
+            <div class="common-words"></div>
         </div>
         <section class="gallery"></section>
     </section>
@@ -78,7 +78,6 @@
                 <select class="font-select" onchange="onSetFont(value)">s
                     <option value="impact">IMPACT</option>
                     <option value="arial">ARIAL</option>
-                    <option value="comic sans">COMIC SANS</option>
                     <option value="myriad pro">MYRIAD PRO</option>
                     <option value="helvetica">HELVETICA</option>
                 </select>
@@ -105,9 +104,9 @@
                 </button>
             </div>
             <div class="file-sec">
-                <button class="share-btn">
-                    <i class="fa-solid fa-share-nodes"></i>
-                    Share</button>
+                <button class="save-btn" onclick="onSaveMeme()">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Save</button>
                 <a href="#" onclick="downloadCanvas(this)" download="file-name">
                     <button class="download-btn">
                         <i class="fa-solid fa-download"></i>
@@ -118,6 +117,7 @@
     </section>
 
 
+    <script src="js/storage.service.js"></script>
     <script src="js/gallery.controller.js"></script>
     <script src="js/meme.controller.js"></script>
     <script src="js/meme.service.js"></script>

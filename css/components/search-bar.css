@@ -2,6 +2,7 @@
     display: flex;
     height: 58px;
     width: 100%;
+    justify-content: center;
 }
 
 .search-input {
@@ -13,7 +14,6 @@
     font-size: 1.312rem;
     color: #fefefe;
     padding-left: 30px;
-
 }
 
 input::placeholder {
@@ -23,7 +23,6 @@ input::placeholder {
     color: #fefefe;
     padding-left: 30px;
     text-indent: -30px;
-
 }
 
 .search-icon {
@@ -38,12 +37,16 @@ input::placeholder {
     cursor: pointer;
 }
 
-
-.more-btn {
-    margin-left: auto;
-    height: 36px;
-    width: 92px;
-    background: linear-gradient(to right, #222f4b, rgb(9, 231, 231));
+.common-words {
+    width: 536px;
+    height: 58px;
+    font-family: poppins;
     border-radius: 29px;
-    font-size: 1.125rem;
+    background-color: rgb(184, 183, 183);
+    font-size: 1.312rem;
+    color: #fefefe;
+    margin-left: 20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }

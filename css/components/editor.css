@@ -66,7 +66,6 @@ canvas {
     background-color: red;
 }
 
-
 .file-sec {
     grid-row: 5;
 
@@ -79,7 +78,7 @@ canvas {
     font-size: 1.312rem;
 }
 
-.share-btn {
+.save-btn {
     background-color: #1e7cd3;
 }
 
@@ -87,12 +86,9 @@ canvas {
     background-color: #8f44bb;
 }
 
-
-
 .emoji-input {
     grid-row: 4;
 }
-
 
 .emoji-input {
     display: flex;
@@ -117,7 +113,6 @@ canvas {
     font-size: 1.562rem;
     margin-right: 5px;
 }
-
 
 .emoji-arrow {
     border: none;

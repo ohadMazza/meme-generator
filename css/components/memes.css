@@ -1,0 +1,8 @@
+.saved-memes {
+    display: none;
+}
+
+.saved-meme {
+    width: 200px;
+    height: 200px;
+}
