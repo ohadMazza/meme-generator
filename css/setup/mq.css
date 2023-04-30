@@ -6,17 +6,12 @@
         height: 25px;
     }
 
-    .main-header .menu-open {
-        transition: transform 0.6s;
-    }
-
     .main-header {
         display: none;
         margin: 0 50px;
         position: fixed;
         top: 60px;
         width: 120px;
-        /* height: 25vh; */
         background-color: lightgray;
         z-index: 1;
         background-color: rgb(52, 55, 55);
