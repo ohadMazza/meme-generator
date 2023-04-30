@@ -5,7 +5,7 @@ let gElcanvas
 let gCtx
 
 const MEMEKEY = 'MmemeData'
-const gSavedMemes = []
+let gSavedMemes = []
 
 let gCommonWords = []
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
@@ -114,6 +114,7 @@ function switchLine() {
     if (gMeme.selectedLineIdx === gMeme.lines.length - 1)
         gMeme.selectedLineIdx = 0
     else gMeme.selectedLineIdx++
+    renderMeme()
 }
 
 function initgMeme() {
@@ -170,7 +171,7 @@ function addLine() {
 }
 
 function getFontSize() {
-    return gMeme.lines[0].size
+    return gMeme.lines[gMeme.selectedLineIdx].size
 }
 
 function setFontColor(color) {
@@ -213,10 +214,28 @@ function addEmoji(emoji) {
     })
 }
 
-function saveMeme() {
-    const memeData = JSON.stringify(gMeme);
-    gSavedMemes.push(memeData);
-    saveToStorage(MEMEKEY, gSavedMemes);
+function saveMeme(imgDataUrl) {
+    gSavedMemes = loadFromStorage(MEMEKEY)
+    gSavedMemes.push({
+        img: imgDataUrl,
+        meme: gMeme
+    })
+
+    saveToStorage(MEMEKEY, gSavedMemes)
+}
+
+function getSavedMemes() {
+    const memes = loadFromStorage(MEMEKEY)
+    return memes
+}
+
+function updateMemeData(index) {
+    const memes = getSavedMemes()
+    gMeme = memes[index].meme
+}
+
+function getImgId() {
+    return gMeme.selectedImgId
 }
 
 function createSearchCountMap() {
@@ -238,7 +257,6 @@ function createSearchCountMap() {
     gCommonWords = keyMapArray.slice(0, 5).map(pair => pair[0]);
     return gCommonWords
 }
-
 
 
 

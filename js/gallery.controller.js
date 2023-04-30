@@ -20,6 +20,18 @@ function renderGallery() {
     document.querySelector('.gallery').innerHTML = strHtmls.join('')
 }
 
+function renderSavedMemes() {
+    const memes = getSavedMemes()
+    console.log(memes)
+
+    var strHtmls = memes.map((meme, index) => `
+    <article class="memes-preview">
+    <img onclick="onMemeSelect('${index}')"  onerror="this.src='img/default.jpg'" src="${meme.img}" alt="Meme Image" >
+    </article>
+    `
+    )
+    document.querySelector('.saved-memes').innerHTML = strHtmls.join('')
+}
 
 function searchMeme(text) {
     gFilterSearch = text

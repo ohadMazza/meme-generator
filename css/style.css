@@ -1,9 +1,18 @@
-@import url(setup/typography.css);
-@import url(components/gallery.css);
-@import url(components/about.css);
-@import url(components/memes.css);
-@import url(components/editor.css);
-@import url(components/header.css);
-@import url(components/search-bar.css);
-@import url(components/text-section.css);
-@import url(basic/base.css);
+     /* SETUP */
+     @import url(setup/typography.css);
+
+
+     /* COMPONENTS */
+     @import url(components/gallery.css);
+     @import url(components/about.css);
+     @import url(components/memes.css);
+     @import url(components/editor.css);
+     @import url(components/header.css);
+     @import url(components/search-bar.css);
+     @import url(components/text-section.css);
+
+     /* BASIC */
+     @import url(basic/base.css);
+
+     /* mq */
+     @import url(setup/mq.css);

@@ -19,6 +19,8 @@
 }
 
 .main-header {
+    text-align: right;
+    width: 100%;
     margin-right: 200px;
 }
 
@@ -33,6 +35,9 @@
     font-weight: 500;
     border-radius: 20px;
     font-size: 1.312rem;
-    margin: 18px auto;
+    margin: 10px auto;
+}
 
+.toggle-btn {
+    display: none;
 }

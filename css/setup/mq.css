@@ -1,0 +1,125 @@
+@media (max-width: 1060px) {
+
+    .toggle-btn {
+        display: block;
+        width: 25px;
+        height: 25px;
+    }
+
+    .main-header .menu-open {
+        transition: transform 0.6s;
+    }
+
+    .main-header {
+        display: none;
+        margin: 0 50px;
+        position: fixed;
+        top: 60px;
+        width: 120px;
+        /* height: 25vh; */
+        background-color: lightgray;
+        z-index: 1;
+        background-color: rgb(52, 55, 55);
+        border-radius: 15px;
+    }
+
+    .menu-open {
+        display: flex;
+        flex-direction: column;
+        right: -20px;
+    }
+
+    .memes-btn,
+    .gallery-btn,
+    .about-btn {
+        margin: 3px;
+
+    }
+
+    .common-words {
+        font-size: 1rem;
+    }
+
+    .meme-editor {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .editor,
+    canvas {
+        margin: 10px 10px;
+        justify-content: center;
+        border-radius: 5%;
+        height: 400px;
+        width: 400px;
+    }
+}
+
+@media (max-width: 900px) {
+    .common-words {
+        font-size: 0.8rem;
+    }
+
+    .img-preview,
+    .memes-preview {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 630px) {
+
+    .app-container {
+        grid-template-columns:
+            minmax(0.5rem, 1fr) minmax(auto, 100%) minmax(0.5rem, 1fr);
+        inset: 0;
+        margin: auto;
+    }
+
+    .gallery-container {
+        width: 100%;
+    }
+
+    .gallery,
+    .saved-memes {
+        margin: auto, 20px
+    }
+
+    .img-preview,
+    .memes-preview {
+        width: 150px;
+        height: 150px;
+    }
+
+    .img-preview img,
+    .memes-preview img {
+        max-width: 100%;
+        border-radius: 2em;
+    }
+
+    .common-words {
+        font-size: 0.7rem;
+    }
+
+    .about-text h1 {
+        font-size: 1.6rem;
+        margin-top: 0;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    .about p:last-child {
+        font-size: 0.7rem;
+    }
+
+    .editor,
+    canvas {
+        margin: 10px 10px;
+        justify-content: center;
+        border-radius: 5%;
+        height: 400px;
+        width: 400px;
+    }
+}

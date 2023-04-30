@@ -4,6 +4,7 @@
 let gStartPos
 let gCurrLineDrag = -1
 let gDragElement = ''
+let gSave = false
 
 const emojisPerView = 4;
 let startIndex = 0;
@@ -11,7 +12,6 @@ let startIndex = 0;
 function init() {
     renderGallery()
     renderCommonWords()
-
 }
 
 function getElementIdxClicked(ev) {
@@ -30,7 +30,6 @@ function getElementIdxClicked(ev) {
         return offsetX >= emoji.x && offsetX <= emoji.x + emoji.width
             && offsetY <= emoji.y && offsetY >= emoji.y - emoji.size
     })
-    console.log(indexEmoji)
     if (indexEmoji !== -1) {
         gDragElement = 'emoji'
         return indexEmoji
@@ -95,12 +94,22 @@ function onImgSelect(imgId) {
     elEditor.style.display = 'flex'
 
     document.querySelector('.input-text').value = ''
-    initgMeme()
+
     initCanvas()
     setImg(imgId)
     addListeners()
     renderMeme()
     renderEmojis()
+}
+
+function onMemeSelect(index) {
+    const elSavedMemes = document.querySelector('.saved-memes')
+    elSavedMemes.style.display = 'none'
+
+    const memeIdx = index
+
+    updateMemeData(index)
+    onImgSelect(getImgId())
 }
 
 function initCanvas() {
@@ -111,7 +120,7 @@ function initCanvas() {
     input.addEventListener('input', onInputChanged)
 }
 
-function renderMeme() {
+function renderMeme(callback) {
     const meme = getMeme()
 
     const elImg = new Image();
@@ -119,7 +128,7 @@ function renderMeme() {
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElcanvas.width, gElcanvas.height)
 
-        meme.lines.forEach(line => {
+        meme.lines.forEach((line, index) => {
             gCtx.font = ` ${line.size}px ${line.font}`
             gCtx.fillStyle = line.color
             gCtx.strokeStyle = line.stroke
@@ -128,6 +137,15 @@ function renderMeme() {
             gCtx.strokeText(line.txt, line.x, line.y)
             gCtx.fillText(line.txt, line.x, line.y)
 
+            if (meme.selectedLineIdx === index && !gSave) {
+                const size = gCtx.measureText(line.txt)
+
+                gCtx.setLineDash([5, 5])
+                gCtx.strokeRect(line.x - 5, line.y - line.size, size.width * 1.1, line.size * 1.2)
+                gCtx.setLineDash([]);
+
+            }
+
         })
         meme.emojis.forEach(emoji => {
             gCtx.font = ` ${emoji.size}px`
@@ -135,6 +153,9 @@ function renderMeme() {
             gCtx.fillText(emoji.txt, emoji.x, emoji.y)
 
         })
+        if (callback) {
+            callback();
+        }
     }
 }
 
@@ -169,12 +190,10 @@ function onAddLine() {
 
 function onDeleteLine() {
     deleteLine()
-    // gCtx.clearRect(0, 0, gElcanvas.width, gElcanvas.height)
     const input = document.querySelector('.input-text')
     input.value = ''
 
     renderMeme()
-
 }
 
 function onSetFont(font) {
@@ -182,10 +201,15 @@ function onSetFont(font) {
     renderMeme()
 }
 
-function downloadCanvas(elLink) {
+function onDownloadCanvas(elLink) {
+    gSave = true
+    renderMeme()
+
     const data = gElcanvas.toDataURL()
     elLink.href = data
     elLink.download = 'my-img'
+
+    gSave = false
 }
 
 function renderEmojis() {
@@ -200,8 +224,6 @@ function renderEmojis() {
 function onAddEmoji(emoji) {
     addEmoji(emoji)
     renderMeme()
-
-
 }
 
 function onMoveLeftEmoji() {
@@ -224,12 +246,24 @@ function onChangedStrokeColor(value) {
     renderMeme();
 }
 
-function onOpenGallery() {
+function closedSections() {
+    const elMemes = document.querySelector('.saved-memes')
+    elMemes.style.display = 'none'
+
     const elEditor = document.querySelector('.meme-editor')
     elEditor.style.display = 'none'
 
     const elAbout = document.querySelector('.about')
     elAbout.style.display = 'none'
+
+    const elGallery = document.querySelector('.gallery-container')
+    elGallery.style.display = 'none'
+}
+
+function onOpenGallery() {
+    toggleMenu()
+    initgMeme()
+    closedSections()
 
     const elGallery = document.querySelector('.gallery-container')
     elGallery.style.display = 'flex'
@@ -238,30 +272,26 @@ function onOpenGallery() {
 }
 
 function onOpenAbout() {
-    const elEditor = document.querySelector('.meme-editor')
-    elEditor.style.display = 'none'
-
-    const elGallery = document.querySelector('.gallery-container')
-    elGallery.style.display = 'none'
-
+    toggleMenu()
+    closedSections()
     const elAbout = document.querySelector('.about')
     elAbout.style.display = 'flex'
 }
 
 function onOpenMemes() {
-    const elAbout = document.querySelector('.about')
-    elAbout.style.display = 'none'
+    toggleMenu()
+    closedSections()
+    const elMemes = document.querySelector('.saved-memes')
+    elMemes.style.display = 'flex'
 
-    const elEditor = document.querySelector('.meme-editor')
-    elEditor.style.display = 'none'
-
-    const elGallery = document.querySelector('.gallery-container')
-    elGallery.style.display = 'none'
+    renderSavedMemes()
 }
 
 function onSaveMeme() {
-    const dataUrl = gElcanvas.toDataURL();
-    saveMeme(dataUrl)
+    removeBorder()
+    const imgDataUrl = gElcanvas.toDataURL('image/jpg');
+    saveMeme(imgDataUrl)
+    gSave = false
 }
 
 function OnClickedSeach() {
@@ -275,4 +305,14 @@ function renderCommonWords() {
     const commonWords = createSearchCountMap()
     const ElCommon = document.querySelector('.common-words')
     ElCommon.innerHTML = commonWords.join(" ");
+}
+
+function removeBorder() {
+    gSave = true
+    renderMeme()
+}
+
+function toggleMenu() {
+    const elHeader = document.querySelector(".main-header")
+    elHeader.classList.toggle('menu-open')
 }

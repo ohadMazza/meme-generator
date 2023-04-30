@@ -17,9 +17,13 @@
             <img src="img/memeLogo.png">
         </div>
         <div class="main-header">
+            <button class="memes-btn" onclick="onOpenMemes()">Memes</button>
             <button class="gallery-btn" onclick="onOpenGallery()">Gallery</button>
             <button class="about-btn" onclick="onOpenAbout()">About</button>
         </div>
+        <button class="toggle-btn" type=" button" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </header>
     <section class="saved-memes">
     </section>
@@ -107,7 +111,7 @@
                 <button class="save-btn" onclick="onSaveMeme()">
                     <i class="fa-solid fa-floppy-disk"></i>
                     Save</button>
-                <a href="#" onclick="downloadCanvas(this)" download="file-name">
+                <a href="#" download="file-name" onclick="onDownloadCanvas(this)">
                     <button class="download-btn">
                         <i class="fa-solid fa-download"></i>
                         Download</button>
@@ -115,7 +119,6 @@
             </div>
         </div>
     </section>
-
 
     <script src="js/storage.service.js"></script>
     <script src="js/gallery.controller.js"></script>

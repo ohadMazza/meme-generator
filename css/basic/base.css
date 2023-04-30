@@ -10,7 +10,7 @@ body {
 
 .app-container {
     grid-template-columns:
-        minmax(2rem, 1fr) minmax(auto, 1257px) minmax(2rem, 1fr);
+        minmax(2rem, 1fr) minmax(auto, 100%) minmax(2rem, 1fr);
     inset: 0;
     margin: auto;
 }
